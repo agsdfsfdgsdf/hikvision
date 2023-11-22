@@ -3,9 +3,8 @@ package com.NetSDKDemo;
 import Common.osSelect;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
-import java.util.Timer;
 
-import static com.NetSDKDemo.VideoDemo.realPlay;
+import java.util.Timer;
 
 /**
  * @create 2020-12-24-17:55
@@ -42,11 +41,11 @@ public class ClientDemo {
                 try {
                     if (osSelect.isWindows())
                         //win系统加载库路径
-                        strDllPath = System.getProperty("user.dir") + "\\lib\\HCNetSDK.dll";
+                        strDllPath = System.getProperty("user.dir") + "\\库文件\\HCNetSDK.dll";
 
                     else if (osSelect.isLinux())
                         //Linux系统加载库路径
-                        strDllPath = System.getProperty("user.dir") + "/lib/libhcnetsdk.so";
+                        strDllPath = System.getProperty("user.dir") + "/库文件/libhcnetsdk.so";
                     hCNetSDK = (HCNetSDK) Native.loadLibrary(strDllPath, HCNetSDK.class);
                 } catch (Exception ex) {
                     System.out.println("loadLibrary: " + strDllPath + " Error: " + ex.getMessage());
@@ -69,10 +68,10 @@ public class ClientDemo {
                 try {
                     if (osSelect.isWindows())
                         //win系统加载库路径
-                        strPlayPath = System.getProperty("user.dir") + "\\lib\\PlayCtrl.dll";
+                        strPlayPath = System.getProperty("user.dir") + "\\库文件\\PlayCtrl.dll";
                     else if (osSelect.isLinux())
                         //Linux系统加载库路径
-                        strPlayPath = System.getProperty("user.dir") + "/lib/libPlayCtrl.so";
+                        strPlayPath = System.getProperty("user.dir") + "/库文件/libPlayCtrl.so";
                     playControl=(PlayCtrl) Native.loadLibrary(strPlayPath,PlayCtrl.class);
 
                 } catch (Exception ex) {
@@ -102,8 +101,8 @@ public class ClientDemo {
             HCNetSDK.BYTE_ARRAY ptrByteArray1 = new HCNetSDK.BYTE_ARRAY(256);
             HCNetSDK.BYTE_ARRAY ptrByteArray2 = new HCNetSDK.BYTE_ARRAY(256);
             //这里是库的绝对路径，请根据实际情况修改，注意改路径必须有访问权限
-            String strPath1 = System.getProperty("user.dir") + "/lib/libcrypto.so.1.1";
-            String strPath2 = System.getProperty("user.dir") + "/lib/libssl.so.1.1";
+            String strPath1 = System.getProperty("user.dir") + "/库文件/libcrypto.so.1.1";
+            String strPath2 = System.getProperty("user.dir") + "/库文件/libssl.so.1.1";
 
             System.arraycopy(strPath1.getBytes(), 0, ptrByteArray1.byValue, 0, strPath1.length());
             ptrByteArray1.write();
@@ -137,7 +136,7 @@ public class ClientDemo {
         //启动SDK写日志
         hCNetSDK.NET_DVR_SetLogToFile(3, "./sdkLog", false);
 
-        login_V40("10.16.36.12",(short) 8000,"admin","hik12345");
+        login_V40("10.5.68.44",(short) 8000,"admin","deyixigu2023");
 
         
         //注释掉的代码也可以参考，去掉注释可以运行
